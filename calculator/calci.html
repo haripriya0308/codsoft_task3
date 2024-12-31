@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="Stylesheet" href="calci_style.css" />
+    <title>CALCULATOR</title>
+  </head>
+  <body>
+    <div class="table">
+      <div class="calculator">
+        <input type="text" placeholder="0" id="resultscreen" />
+        <button onclick="Clear()" onmousedown="audio.play()">CL</button>
+        <button onclick="del()" onmousedown="audio.play()">DEL</button>
+        <button onclick="display('%')" onmousedown="audio.play()">%</button>
+        <button onclick="display('/')" onmousedown="audio.play()">/</button>
+        <button onclick="display('7')" onmousedown="audio.play()">7</button>
+        <button onclick="display('8')" onmousedown="audio.play()">8</button>
+        <button onclick="display('9')" onmousedown="audio.play()">9</button>
+        <button onclick="display('*')" onmousedown="audio.play()">*</button>
+        <button onclick="display('4')" onmousedown="audio.play()">4</button>
+        <button onclick="display('5')" onmousedown="audio.play()">5</button>
+        <button onclick="display('6')" onmousedown="audio.play()">6</button>
+        <button onclick="display('-')" onmousedown="audio.play()">-</button>
+        <button onclick="display('1')" onmousedown="audio.play()">1</button>
+        <button onclick="display('2')" onmousedown="audio.play()">2</button>
+        <button onclick="display('3')" onmousedown="audio.play()">3</button>
+        <button onclick="display('+')" onmousedown="audio.play()">+</button>
+        <button onclick="display('.')" onmousedown="audio.play()">.</button>
+        <button onclick="display('0')" onmousedown="audio.play()">0</button>
+        <button onclick="Calculate()" class="equal" onmousedown="audio.play()">
+          =
+        </button>
+      </div>
+    </div>
+    <script>
+      let resultscreen = document.getElementById("resultscreen");
+      function display(num) {
+        resultscreen.value += num;
+      }
+      function Calculate() {
+        try {
+          resultscreen.value = eval(resultscreen.value);
+        } catch (err) {
+          alert("Invalid");
+        }
+      }
+      function Clear() {
+        resultscreen.value = "";
+      }
+      function del() {
+        resultscreen.value = resultscreen.value.slice(0, -1);
+      }
+    </script>
+    <script type="text/javascript">
+      const audio = new Audio();
+      audio.src = "clickaudio.wav";
+    </script>
+  </body>
+</html>
